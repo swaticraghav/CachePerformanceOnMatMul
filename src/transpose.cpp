@@ -45,7 +45,7 @@ vector <vector <int> > readMatrix(string inputFile){
 // Logic to transpose a given matrix
 vector <vector<int> > transposeMatrix(vector< vector<int> > m){
     
-    if(m.size() == 0) return;
+    if(m.size() == 0) return {};
     
     vector <int> a(m.size(), 0);
     vector <vector <int> > result(m[0].size(), a);
