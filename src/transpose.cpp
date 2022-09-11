@@ -17,48 +17,53 @@ void parsec_roi_end()
 
 }
 
-vector <vector <int> > read_matrix(string filename){
-	vector <vector <int> > A;
+// The below function holds logic to read transpose
+vector <vector <int> > readMatrix(string inputFile){
+    
+	vector <vector <int> > result;
 	string line;
 	ifstream infile;
-	infile.open(filename.c_str());
+    
+	infile.open(inputFile.c_str());
+    
 	int i = 0;
-		while (getline(infile, line) && !line.empty()) {
+    while (getline(infile, line) && !line.empty()) {
 			istringstream iss(line);
-			A.resize(A.size() + 1);
+            result.resize(result.size() + 1);
 			int a, j = 0;
 			while (iss >> a) {
-				A[i].push_back(a);
+                result[i].push_back(a);
 				j++;
 			}
 			i++;
 		}
 	infile.close();
-	return A;
+	return result;
 
 }
 
+// Logic to transpose a given matrix
+vector <vector<int> > transposeMatrix(vector< vector<int> > m){
+    
+    if(m.size() == 0) return;
+    
+    vector <int> a(m.size(), 0);
+    vector <vector <int> > result(m[0].size(), a);
 
-vector <vector<int> > matrix_transpose(vector< vector<int> > A){
-	int rows = A.size();
-	int columns = A[0].size();
-
-	vector <int> temp(rows, 0);
-	vector <vector <int> > result(columns, temp);
-
-	for(int i = 0; i < rows; i++){
-		for(int j = 0; j < columns; j++){
-			result[i][j] = A[j][i];
+	for(int i = 0; i < m.size(); i++){
+		for(int j = 0; j < m[i].size(); j++){
+			result[i][j] = m[j][i];
 		}
 	}
 
 	return result;
 }
 
-void printMatrix(vector< vector<int> > matrix) {
+// Below function holds the logic to print a matrix
+void printResultantMatrix(vector< vector<int> > m) {
 	vector< vector<int> >::iterator it;
 	vector<int>::iterator inner;
-	for (it=matrix.begin(); it != matrix.end(); it++) {
+	for (it=m.begin(); it != m.end(); it++) {
 		for (inner = it->begin(); inner != it->end(); inner++) {
 			cout << *inner;
 			if(inner+1 != it->end()) {
@@ -69,22 +74,30 @@ void printMatrix(vector< vector<int> > matrix) {
 	}
 }
 
+// Main Function
 int main (int argc, char* argv[]) {
-	string filename;
-
+	string file;
 	cout << argv[0];
+    
 	if (argc < 3) {
-		filename = "mat_transpose.in";
+        file = "transpose_input.in";
 	} else {
-		filename = argv[2];
+        file = argv[2];
 	}
 
-	// cout << filename;
-	vector <vector <int> > A = read_matrix(filename);
-	printMatrix(A);
+    // Reading the file
+	vector <vector <int> > matrix = readMatrix(file);
+    
+    // printing the input matrix
+    printResultantMatrix(matrix);
+    
+    // transpose logic
     parsec_roi_begin();
-	vector< vector<int> > A_transpose = matrix_transpose(A);
+	vector< vector<int> > matrix_transpose = transposeMatrix(matrix);
     parsec_roi_end();
-	printMatrix(A_transpose);
+    
+    // printing the output matrix
+    printResultantMatrix(matrix_transpose);
+    
 	return 0;
 }
