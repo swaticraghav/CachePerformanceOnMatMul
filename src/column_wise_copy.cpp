@@ -58,7 +58,7 @@ vector <vector<int> > columnWiseCopyOfAMatrix(vector< vector<int> > m){
 }
 
 // Below function holds the logic to print a matrix
-void printResultantMatrix(vector< vector<int> > m) {
+void printMatrix(vector< vector<int> > m) {
 
 	vector< vector<int> >::iterator it;
 	vector<int>::iterator inner;
@@ -80,7 +80,7 @@ int main (int argc, char* argv[]) {
 	cout << argv[0];
     
 	if (argc < 3) {
-        file = "columncopy_input.in";
+        file = "matrix_input.in";
 	} else {
         file = argv[2];
 	}
@@ -89,7 +89,7 @@ int main (int argc, char* argv[]) {
 	vector <vector <int> > matrix = readMatrix(file);
     
   // printing the input matrix
-  printResultantMatrix(matrix);
+  printMatrix(matrix);
     
   // Columnwise Copy logic
   parsec_roi_begin();
@@ -97,7 +97,7 @@ int main (int argc, char* argv[]) {
   parsec_roi_end();
   
   // printing the output matrix
-  printResultantMatrix(result);
+  printMatrix(result);
     
 	return 0;
 }

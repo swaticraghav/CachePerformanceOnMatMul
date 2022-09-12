@@ -41,19 +41,18 @@ vector <vector <int> > readMatrix(string inputFile){
 
 }
 
-// Logic to transpose a given matrix
-vector <vector<int> > transposeMatrix(vector< vector<int> > m){
+// Logic to Gather
+vector <vector<int> > gather(vector< vector<int> > inputMatrix, vector< vector<int> > indexingMatrix){
     
-    if(m.size() == 0) return {};
+if(inputMatrix.size() == 0 || indexingMatrix.size()) return {};
     
-    vector <int> a(m.size(), 0);
-    vector <vector <int> > result(m[0].size(), a);
+vector <int> result(m.size(), 0);
 
-	for(int i = 0; i < m.size(); i++){
-		for(int j = 0; j < m[i].size(); j++){
-			result[i][j] = m[j][i];
-		}
-	}
+for (int i = 0; i < indexingMatrix.size(); i++) {
+  int p = indexingMatrix[i][0];
+  int q = indexingMatrix[i][1];
+  result[i] = a[p][q];
+}
 
 	return result;
 }
@@ -63,7 +62,7 @@ void printMatrix(vector< vector<int> > m) {
 
 	vector< vector<int> >::iterator it;
 	vector<int>::iterator inner;
-
+	
 	for (it=m.begin(); it != m.end(); it++) {
 		for (inner = it->begin(); inner != it->end(); inner++) {
 			cout << *inner;
@@ -78,28 +77,32 @@ void printMatrix(vector< vector<int> > m) {
 // Main Function
 int main (int argc, char* argv[]) {
 	
-	string file;
+	string inputMatrixFile, indexingMatrixFile;
 	cout << argv[0];
     
 	if (argc < 3) {
-        file = "matrix_input.in";
+        inputMatrixFile = "matrix_input.in";
+        indexingMatrixFile = "matrix_input_2.in";
 	} else {
-        file = argv[2];
+        inputMatrixFile = argv[2];
+        indexingMatrixFile = argv[2];
 	}
 
-    // Reading the file
-	vector <vector <int> > matrix = readMatrix(file);
+  // Reading the two files
+	vector <vector <int> > inputMatrix = readMatrix(inputMatrixFile);
+  vector <vector <int> > indexingMatrix = readMatrix(indexingMatrixFile);
     
-    // printing the input matrix
-    printMatrix(matrix);
+  // printing the two matrices
+  printMatrix(inputMatrix);
+  printMatrix(indexingMatrix);
     
-    // transpose logic
-    parsec_roi_begin();
-	vector< vector<int> > matrix_transpose = transposeMatrix(matrix);
-    parsec_roi_end();
+  // gather logic
+  parsec_roi_begin();
+	vector<int> result = gather(matrix);
+  parsec_roi_end();
     
-    // printing the output matrix
-    printMatrix(matrix_transpose);
+  // printing the output matrix
+  printMatrix(result);
     
 	return 0;
 }
