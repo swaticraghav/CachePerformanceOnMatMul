@@ -16,7 +16,7 @@ void parsec_roi_end()
 
 }
 
-// The below function holds logic to read matrix
+// The below function holds logic to read a matrix
 vector <vector <int> > readMatrix(string inputFile){
     
 	vector <vector <int> > result;
@@ -41,20 +41,19 @@ vector <vector <int> > readMatrix(string inputFile){
 
 }
 
-// Logic to transpose a given matrix
-vector <vector<int> > transposeMatrix(vector< vector<int> > m){
-    
-    if(m.size() == 0) return {};
-    
-    vector <int> a(m.size(), 0);
-    vector <vector <int> > result(m[0].size(), a);
+// Logic to copy a given matrix column-wise
+vector <vector<int> > columnWiseCopyOfAMatrix(vector< vector<int> > m){
 
-	for(int i = 0; i < m.size(); i++){
-		for(int j = 0; j < m[i].size(); j++){
+  if(m.size() == 0) return {};
+
+  vector <int> a(m.size(), 0);
+  vector <vector <int> > result(m[0].size(), a);
+
+	for(int j = 0; j < m[0].size(); j++){
+	  for(int i = 0; i < m.size(); i++){
 			result[i][j] = m[j][i];
 		}
 	}
-
 	return result;
 }
 
@@ -63,7 +62,7 @@ void printResultantMatrix(vector< vector<int> > m) {
 
 	vector< vector<int> >::iterator it;
 	vector<int>::iterator inner;
-	
+
 	for (it=m.begin(); it != m.end(); it++) {
 		for (inner = it->begin(); inner != it->end(); inner++) {
 			cout << *inner;
@@ -77,29 +76,28 @@ void printResultantMatrix(vector< vector<int> > m) {
 
 // Main Function
 int main (int argc, char* argv[]) {
-	
 	string file;
 	cout << argv[0];
     
 	if (argc < 3) {
-        file = "transpose_input.in";
+        file = "columncopy_input.in";
 	} else {
         file = argv[2];
 	}
 
-    // Reading the file
+  // Reading the file
 	vector <vector <int> > matrix = readMatrix(file);
     
-    // printing the input matrix
-    printResultantMatrix(matrix);
+  // printing the input matrix
+  printResultantMatrix(matrix);
     
-    // transpose logic
-    parsec_roi_begin();
-	vector< vector<int> > matrix_transpose = transposeMatrix(matrix);
-    parsec_roi_end();
-    
-    // printing the output matrix
-    printResultantMatrix(matrix_transpose);
+  // Columnwise Copy logic
+  parsec_roi_begin();
+  vector< vector<int> > result = columnWiseCopyOfAMatrix(matrix);
+  parsec_roi_end();
+  
+  // printing the output matrix
+  printResultantMatrix(result);
     
 	return 0;
 }
