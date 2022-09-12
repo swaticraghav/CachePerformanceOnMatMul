@@ -80,7 +80,7 @@ int main (int argc, char* argv[]) {
 	cout << argv[0];
     
 	if (argc < 3) {
-        file = "matrix_input.in";
+        file = "matrix_input_column_wise_copy.in";
 	} else {
         file = argv[2];
 	}

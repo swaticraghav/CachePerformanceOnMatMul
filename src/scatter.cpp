@@ -8,9 +8,9 @@ using namespace std;
 
 vector<vector<int>> globalVariable
 {
-      {1, 2, 3},
-      {4, 5, 6},
-      {7, 8, 9}
+      {1, 2, 2},
+      {0, 0, 0},
+      {3, 3, 3}
 };
 
 void parsec_roi_begin() 
@@ -105,15 +105,15 @@ int main (int argc, char* argv[]) {
 	cout << argv[0];
     
 	if (argc < 3) {
-        inputMatrixFile = "datavalue_input.in";
-        indexingMatrixFile = "matrix_input.in";
+        inputMatrixFile = "matrix_input_scatter.in";
+        indexingMatrixFile = "matrix_indexing_scatter.in";
 	} else {
         inputMatrixFile = argv[2];
         indexingMatrixFile = argv[2];
 	}
 
   // Reading the two files
-	vector <int> inputMatrix = readArray(inputMatrixFile);
+  vector <int> inputMatrix = readArray(inputMatrixFile);
   vector <vector <int> > indexingMatrix = readMatrix(indexingMatrixFile);
     
   // scatter logic

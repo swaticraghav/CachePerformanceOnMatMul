@@ -91,8 +91,8 @@ int main (int argc, char* argv[]) {
 	cout << argv[0];
     
 	if (argc < 3) {
-        inputMatrixFile = "matrix_input.in";
-        indexingMatrixFile = "matrix_input_2.in";
+        inputMatrixFile = "matrix_input_gather.in";
+        indexingMatrixFile = "matrix_indexing_gather.in";
 	} else {
         inputMatrixFile = argv[2];
         indexingMatrixFile = argv[2];
