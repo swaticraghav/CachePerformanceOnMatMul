@@ -16,7 +16,7 @@ void parsec_roi_end()
 
 }
 
-// The below function holds logic to read matrix
+// Logic to read matrix
 vector <vector <int> > readMatrix(string inputFile){
     
 	vector <vector <int> > result;
@@ -58,7 +58,7 @@ vector <vector<int> > transposeMatrix(vector< vector<int> > m){
 	return result;
 }
 
-// Below function holds the logic to print a matrix
+// Logic to print a matrix
 void printMatrix(vector< vector<int> > m) {
 
 	vector< vector<int> >::iterator it;
@@ -87,10 +87,10 @@ int main (int argc, char* argv[]) {
         file = argv[2];
 	}
 
-    // Reading the file
+    // Read the file
 	vector <vector <int> > matrix = readMatrix(file);
     
-    // printing the input matrix
+    // print the input matrix
     printMatrix(matrix);
     
     // transpose logic
@@ -98,7 +98,7 @@ int main (int argc, char* argv[]) {
 	vector< vector<int> > matrix_transpose = transposeMatrix(matrix);
     parsec_roi_end();
     
-    // printing the output matrix
+    // print the output matrix
     printMatrix(matrix_transpose);
     
 	return 0;

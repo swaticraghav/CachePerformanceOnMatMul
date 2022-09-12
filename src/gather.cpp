@@ -16,7 +16,7 @@ void parsec_roi_end()
 
 }
 
-// The below function holds logic to read matrix
+// Logic to read matrix
 vector <vector <int> > readMatrix(string inputFile){
     
 	vector <vector <int> > result;
@@ -42,22 +42,21 @@ vector <vector <int> > readMatrix(string inputFile){
 }
 
 // Logic to Gather
-vector <vector<int> > gather(vector< vector<int> > inputMatrix, vector< vector<int> > indexingMatrix){
+vector<int> gather(vector< vector<int> > inputMatrix, vector< vector<int> > indexingMatrix){
     
-if(inputMatrix.size() == 0 || indexingMatrix.size()) return {};
-    
-vector <int> result(m.size(), 0);
+if(inputMatrix.size() == 0 || indexingMatrix.size() == 0) return {};
+
+vector<int> result(indexingMatrix.size(), 0);
 
 for (int i = 0; i < indexingMatrix.size(); i++) {
   int p = indexingMatrix[i][0];
   int q = indexingMatrix[i][1];
-  result[i] = a[p][q];
+  result[i] = inputMatrix[p][q];
 }
-
 	return result;
 }
 
-// Below function holds the logic to print a matrix
+// Logic to print a matrix
 void printMatrix(vector< vector<int> > m) {
 
 	vector< vector<int> >::iterator it;
@@ -74,6 +73,17 @@ void printMatrix(vector< vector<int> > m) {
 	}
 }
 
+// Logic to print an array
+void printArray(vector<int> m) {
+
+	vector<int>::iterator inner;
+	
+  for(int i = 0; i < m.size(); i++){
+    cout << inner[i] << " ";
+  }
+  cout << "\n";
+}
+
 // Main Function
 int main (int argc, char* argv[]) {
 	
@@ -88,21 +98,21 @@ int main (int argc, char* argv[]) {
         indexingMatrixFile = argv[2];
 	}
 
-  // Reading the two files
+  // Read the two files
 	vector <vector <int> > inputMatrix = readMatrix(inputMatrixFile);
   vector <vector <int> > indexingMatrix = readMatrix(indexingMatrixFile);
     
-  // printing the two matrices
+  // Print the two matrices
   printMatrix(inputMatrix);
   printMatrix(indexingMatrix);
     
   // gather logic
   parsec_roi_begin();
-	vector<int> result = gather(matrix);
+  vector<int> result = gather(inputMatrix, indexingMatrix);
   parsec_roi_end();
     
-  // printing the output matrix
-  printMatrix(result);
+  // Print the output matrix
+  printArray(result);
     
 	return 0;
 }

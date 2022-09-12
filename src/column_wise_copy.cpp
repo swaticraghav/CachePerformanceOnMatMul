@@ -16,7 +16,7 @@ void parsec_roi_end()
 
 }
 
-// The below function holds logic to read a matrix
+// Logic to read a matrix
 vector <vector <int> > readMatrix(string inputFile){
     
 	vector <vector <int> > result;
@@ -57,7 +57,7 @@ vector <vector<int> > columnWiseCopyOfAMatrix(vector< vector<int> > m){
 	return result;
 }
 
-// Below function holds the logic to print a matrix
+// Logic to print a matrix
 void printMatrix(vector< vector<int> > m) {
 
 	vector< vector<int> >::iterator it;
@@ -85,10 +85,10 @@ int main (int argc, char* argv[]) {
         file = argv[2];
 	}
 
-  // Reading the file
+  // Read the file
 	vector <vector <int> > matrix = readMatrix(file);
     
-  // printing the input matrix
+  // print the input matrix
   printMatrix(matrix);
     
   // Columnwise Copy logic
@@ -96,7 +96,7 @@ int main (int argc, char* argv[]) {
   vector< vector<int> > result = columnWiseCopyOfAMatrix(matrix);
   parsec_roi_end();
   
-  // printing the output matrix
+  // print the output matrix
   printMatrix(result);
     
 	return 0;
