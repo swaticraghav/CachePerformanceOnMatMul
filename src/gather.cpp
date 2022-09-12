@@ -99,7 +99,7 @@ int main (int argc, char* argv[]) {
 	}
 
   // Read the two files
-	vector <vector <int> > inputMatrix = readMatrix(inputMatrixFile);
+  vector <vector <int> > inputMatrix = readMatrix(inputMatrixFile);
   vector <vector <int> > indexingMatrix = readMatrix(indexingMatrixFile);
     
   // Print the two matrices
@@ -114,5 +114,5 @@ int main (int argc, char* argv[]) {
   // Print the output matrix
   printArray(result);
     
-	return 0;
+  return 0;
 }
