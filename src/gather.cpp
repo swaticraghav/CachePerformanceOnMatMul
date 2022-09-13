@@ -75,11 +75,9 @@ void printMatrix(vector< vector<int> > m) {
 
 // Logic to print an array
 void printArray(vector<int> m) {
-
-	vector<int>::iterator inner;
 	
   for(int i = 0; i < m.size(); i++){
-    cout << inner[i] << " ";
+    cout << m[i] << " ";
   }
   cout << "\n";
 }
