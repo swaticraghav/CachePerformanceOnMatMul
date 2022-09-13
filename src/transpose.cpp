@@ -91,6 +91,7 @@ int main (int argc, char* argv[]) {
 	vector <vector <int> > matrix = readMatrix(file);
     
     // print the input matrix
+	cout << "Input Matrix - ";
     printMatrix(matrix);
     
     // transpose logic
@@ -99,6 +100,7 @@ int main (int argc, char* argv[]) {
     parsec_roi_end();
     
     // print the output matrix
+	cout << "Transpose Matrix - ";
     printMatrix(matrix_transpose);
     
 	return 0;

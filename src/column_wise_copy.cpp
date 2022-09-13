@@ -51,7 +51,7 @@ vector <vector<int> > columnWiseCopyOfAMatrix(vector< vector<int> > m){
 
 	for(int j = 0; j < m[0].size(); j++){
 	  for(int i = 0; i < m.size(); i++){
-			result[i][j] = m[j][i];
+			result[i][j] = m[i][j];
 		}
 	}
 	return result;

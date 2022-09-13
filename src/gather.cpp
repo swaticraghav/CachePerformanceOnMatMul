@@ -87,23 +87,30 @@ void printArray(vector<int> m) {
 // Main Function
 int main (int argc, char* argv[]) {
 	
-	string inputMatrixFile, indexingMatrixFile;
+	string indexingMatrixFile;
 	cout << argv[0];
     
 	if (argc < 3) {
-        inputMatrixFile = "matrix_input_gather.in";
+        //inputMatrixFile = "matrix_input_gather.in";
         indexingMatrixFile = "matrix_indexing_gather.in";
 	} else {
-        inputMatrixFile = argv[2];
+        //inputMatrixFile = argv[2];
         indexingMatrixFile = argv[2];
 	}
 
-  // Read the two files
-  vector <vector <int> > inputMatrix = readMatrix(inputMatrixFile);
+	// Read the two files
+	vector <vector <int> > inputMatrix {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
   vector <vector <int> > indexingMatrix = readMatrix(indexingMatrixFile);
     
   // Print the two matrices
+  cout << "Input Matrix - ";
   printMatrix(inputMatrix);
+  cout << "Indexing Matrix - ";
   printMatrix(indexingMatrix);
     
   // gather logic

@@ -6,8 +6,7 @@
 
 using namespace std;
 
-vector<vector<int>> globalVariable
-{
+std::vector<vector<int> > gv{
       {1, 2, 2},
       {0, 0, 0},
       {3, 3, 3}
@@ -70,15 +69,14 @@ vector <int> readArray(string filename){
 // Logic to SCATTER
 void scatter(vector<int> dataValueMatrix, vector< vector<int> > indexingMatrix){
     
-if (dataValueMatrix.length != indexingmatrix.length)
-			return;
-
-for (int i = 0; i < indexingmatrix.length; i++) {
-  int p = indexingmatrix[i][0];
-  int q = indexingmatrix[i][1];
-  gv[p][q] = dataValueMatrix[i];
+if (dataValueMatrix.size() == indexingMatrix.size())
+{
+  for (int i = 0; i < indexingMatrix.size(); i++) {
+    int p = indexingMatrix[i][0];
+    int q = indexingMatrix[i][1];
+    gv[p][q] = dataValueMatrix[i];
+  }
 }
-
 }
 
 // Below function holds the logic to print a matrix
@@ -101,29 +99,29 @@ void printMatrix(vector< vector<int> > m) {
 // Main Function
 int main (int argc, char* argv[]) {
 	
-	string inputMatrixFile, indexingMatrixFile;
+	string indexingMatrixFile;
 	cout << argv[0];
     
 	if (argc < 3) {
-        inputMatrixFile = "matrix_input_scatter.in";
+        //inputMatrixFile = "matrix_input_scatter.in";
         indexingMatrixFile = "matrix_indexing_scatter.in";
 	} else {
-        inputMatrixFile = argv[2];
+        //inputMatrixFile = argv[2];
         indexingMatrixFile = argv[2];
 	}
 
   // Reading the two files
-  vector <int> inputMatrix = readArray(inputMatrixFile);
+  vector <int> inputMatrix {5, 9};
   vector <vector <int> > indexingMatrix = readMatrix(indexingMatrixFile);
     
   // scatter logic
   parsec_roi_begin();
-	vector<int> result = scatter(matrix);
+	scatter(inputMatrix, indexingMatrix);
   parsec_roi_end();
     
   // printing the output matrix
-  for (int i = 0; i < gv.length; i++) {
-			for (int j = 0; j < gv[0].length; j++) {
+  for (int i = 0; i < gv.size(); i++) {
+			for (int j = 0; j < gv[0].size(); j++) {
         cout << gv[i][j] << " ";
 			}
       cout << '\n';
