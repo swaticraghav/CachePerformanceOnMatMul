@@ -117,6 +117,7 @@ int main (int argc, char* argv[]) {
   parsec_roi_end();
     
   // Print the output matrix
+  cout << "Output Matrix - ";
   printArray(result);
     
   return 0;
